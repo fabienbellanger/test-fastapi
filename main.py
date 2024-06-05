@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
-from items import itemsRouter
+import items
 
 
 app = FastAPI(
@@ -20,7 +20,7 @@ app.add_middleware(TrustedHostMiddleware, allowed_hosts=["localhost", "127.0.0.1
 
 
 # Routes
-app.include_router(itemsRouter, prefix="/v1")
+app.include_router(items.router, prefix="/v1")
 
 
 @app.get("/", name="Home", tags=["Home"])

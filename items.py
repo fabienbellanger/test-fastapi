@@ -11,7 +11,7 @@ class Item(BaseModel):
 
 
 # Items router
-itemsRouter = APIRouter(
+router = APIRouter(
     prefix="/items",
     tags=["Items"],
     responses={404: {"description": "Page Not found"}},
@@ -19,11 +19,11 @@ itemsRouter = APIRouter(
 )
 
 
-@itemsRouter.get("/{item_id}")
+@router.get("/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
 
 
-@itemsRouter.put("/{item_id}")
+@router.put("/{item_id}")
 def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_id": item_id}
