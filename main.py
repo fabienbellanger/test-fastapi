@@ -12,6 +12,9 @@ app = FastAPI(
         "name": "Fabien Bellanger",
         "url": "https://fabien-bellanger.fr",
     },
+    include_in_schema=True,
+    docs_url="/docs",
+    redoc_url=None,  # Disable ReDoc page
 )
 
 
