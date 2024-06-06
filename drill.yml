@@ -1,0 +1,24 @@
+concurrency: 256
+base: 'http://127.0.0.1:8000'
+iterations: 10000
+rampup: 0
+
+plan:
+  - name: Home
+    request:
+      url: /
+  
+  - name: Get items
+    assign: Items
+    request:
+      url: /v1/items/23
+  
+  - name: Put items
+    assign: loItemsgin
+    request:
+      url: /v1/items/23
+      method: PUT
+      body: '{"name": "test", "price": 120.56, "is_offer": true}'
+      headers:
+        Content-Type: 'application/json'
+
