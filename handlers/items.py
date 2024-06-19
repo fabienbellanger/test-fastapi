@@ -9,6 +9,13 @@ class Item(BaseModel):
     price: float
     is_offer: Union[bool, None] = None
 
+    """
+    Display item
+    """
+
+    def display(self) -> str:
+        return self.name + " at " + str(self.price)
+
 
 # Items router
 router = APIRouter(
@@ -20,10 +27,10 @@ router = APIRouter(
 
 
 @router.get("/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
+def read_item(item_id: int, q: Union[bool, None] = None):
     return {"item_id": item_id, "q": q}
 
 
 @router.put("/{item_id}")
 def update_item(item_id: int, item: Item):
-    return {"item_name": item.name, "item_id": item_id}
+    return {"item": item.display(), "item_id": item_id}

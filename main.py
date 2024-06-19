@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.middleware.cors import CORSMiddleware
-import items
-
+from handlers import items
 
 app = FastAPI(
     debug=True,
