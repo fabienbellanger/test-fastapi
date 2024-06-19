@@ -4,6 +4,13 @@ from pydantic import BaseModel
 
 
 # Models
+"""
+Item model
+
+@author Fabien Bellanger
+"""
+
+
 class Item(BaseModel):
     name: str
     price: float
@@ -11,6 +18,8 @@ class Item(BaseModel):
 
     """
     Display item
+    
+    Display the name and the price of an item.
     """
 
     def display(self) -> str:
