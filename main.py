@@ -35,7 +35,7 @@ app.add_middleware(
 
 # Routes
 app.include_router(web.router)
-app.include_router(items.router, prefix="/v1")
+app.include_router(items.router, prefix="/api/v1")
 
 
 if __name__ == "__main__":

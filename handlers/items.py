@@ -16,13 +16,13 @@ class Item(BaseModel):
     price: float
     is_offer: Union[bool, None] = None
 
-    """
-    Display item
-    
-    Display the name and the price of an item.
-    """
-
     def display(self) -> str:
+        """
+        Display item
+
+        Display the name and the price of an item.
+        """
+
         return self.name + " at " + str(self.price)
 
 

@@ -31,3 +31,32 @@ Install dependancies
 ```bash
 pip install -r requirements.txt
 ```
+
+## pip
+
+### Updating Python Packages on Windows or Linux
+
+List of all outdated packages:
+
+```bash
+pip list --outdated
+```
+
+```bash
+pip freeze > requirements.txt
+```
+
+Edit `requirements.txt`, and replace all "==" with ">=".
+
+Update
+
+```bash
+pip install -r requirements.txt --upgrade
+pip freeze > requirements.txt
+```
+
+## Run
+
+```bash
+fastapi dev --reload
+```
