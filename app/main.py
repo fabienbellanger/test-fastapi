@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.middleware.cors import CORSMiddleware
-from app.handlers import items
-from app.handlers import web
+from app.routers import items, web
 
 # Application
 app = FastAPI(
@@ -23,7 +22,7 @@ app = FastAPI(
 # Middlewares
 app.add_middleware(
     TrustedHostMiddleware,
-    allowed_hosts=["localhost", "127.0.0.1", "0.0.0.0", "testserver"],
+    allowed_hosts=["localhost", "127.0.0.1", "0.0.0.0"],
 )
 app.add_middleware(
     CORSMiddleware,

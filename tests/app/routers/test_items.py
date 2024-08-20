@@ -1,8 +1,5 @@
-from fastapi.testclient import TestClient
 from fastapi import status
-from app.main import app
-
-client = TestClient(app, base_url="http://localhost")
+from tests import client
 
 # Get item
 
