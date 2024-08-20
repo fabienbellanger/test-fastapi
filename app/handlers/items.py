@@ -1,20 +1,18 @@
-from typing import Union
 from fastapi import APIRouter
 from pydantic import BaseModel
 
 
 # Models
-"""
-Item model
+class _Item(BaseModel):
+    """
+    Item model (Private)
 
-@author Fabien Bellanger
-"""
+    @author Fabien Bellanger
+    """
 
-
-class Item(BaseModel):
     name: str
     price: float
-    is_offer: Union[bool, None] = None
+    is_offer: bool | None = None
 
     def display(self) -> str:
         """
@@ -36,10 +34,10 @@ router = APIRouter(
 
 
 @router.get("/{item_id}")
-def read_item(item_id: int, q: Union[bool, None] = None):
+def read_item(item_id: int, q: bool | None = None):
     return {"item_id": item_id, "q": q}
 
 
 @router.put("/{item_id}")
-def update_item(item_id: int, item: Item):
+def update_item(item_id: int, item: _Item):
     return {"item": item.display(), "item_id": item_id}

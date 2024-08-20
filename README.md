@@ -60,3 +60,9 @@ pip freeze > requirements.txt
 ```bash
 fastapi dev --reload
 ```
+
+## Tests
+
+```bash
+pytest -v
+```

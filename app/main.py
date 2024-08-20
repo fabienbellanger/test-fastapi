@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.middleware.cors import CORSMiddleware
-from handlers import items
-from handlers import web
+from app.handlers import items
+from app.handlers import web
 
 # Application
 app = FastAPI(
@@ -22,7 +22,8 @@ app = FastAPI(
 
 # Middlewares
 app.add_middleware(
-    TrustedHostMiddleware, allowed_hosts=["localhost", "127.0.0.1", "0.0.0.0"]
+    TrustedHostMiddleware,
+    allowed_hosts=["localhost", "127.0.0.1", "0.0.0.0", "testserver"],
 )
 app.add_middleware(
     CORSMiddleware,
@@ -41,4 +42,4 @@ app.include_router(items.router, prefix="/api/v1")
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8086)
+    uvicorn.run(app, host="127.0.0.1", port=8086)
