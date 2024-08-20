@@ -66,3 +66,9 @@ fastapi dev --reload
 ```bash
 pytest -v
 ```
+
+## Todo
+
+- [ ] Use a database like `sqlite`:
+    - https://medium.com/codenx/crafting-with-fastapi-sqlalchemy-and-pydantic-82ff305c5db1
+    - https://fastapi.tiangolo.com/tutorial/sql-databases/

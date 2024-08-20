@@ -1,30 +1,7 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
+from app.schemas.item import ItemBase
 
 
-# Models
-class _Item(BaseModel):
-    """
-    Item model (Private)
-
-    @author Fabien Bellanger
-    """
-
-    name: str
-    price: float
-    is_offer: bool | None = None
-
-    def display(self) -> str:
-        """
-        Display item
-
-        Display the name and the price of an item.
-        """
-
-        return self.name + " at " + str(self.price)
-
-
-# Items router
 router = APIRouter(
     prefix="/items",
     tags=["Items"],
@@ -33,11 +10,11 @@ router = APIRouter(
 )
 
 
-@router.get("/{item_id}")
-def read_item(item_id: int, q: bool | None = None):
+@router.get("/{item_id}", description="Get item from its ID")
+async def read_item(item_id: int, q: bool | None = None):
     return {"item_id": item_id, "q": q}
 
 
-@router.put("/{item_id}")
-def update_item(item_id: int, item: _Item):
+@router.put("/{item_id}", description="Update item from its ID")
+async def update_item(item_id: int, item: ItemBase):
     return {"item": item.display(), "item_id": item_id}

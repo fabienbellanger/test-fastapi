@@ -7,15 +7,15 @@ router = APIRouter(
 
 
 @router.get("/", name="Home")
-def home():
+async def home():
     return {"Hello": "World"}
 
 
 @router.get("/hello/{name}", name="Hello")
-def home(name: str):
+async def home(name: str):
     return "Hello, " + name + "!"
 
 
 @router.get("/health", name="Heath Check", status_code=status.HTTP_204_NO_CONTENT)
-def health_check():
+async def health_check():
     return None
