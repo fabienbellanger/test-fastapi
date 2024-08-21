@@ -43,5 +43,5 @@ class Item(ItemBase):
 
         return self.name + " at " + str(self.price)
 
-    class Config:
+    class ConfigDict:
         from_attributes = True
