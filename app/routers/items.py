@@ -1,15 +1,18 @@
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
+
 from app.schemas.item import Item, ItemEdit
 from app.repositories import item as item_repository
-from . import get_db
-
+from . import get_db, check_token
 
 router = APIRouter(
-    prefix="/items",
     tags=["Items"],
-    responses={404: {"description": "Page Not found"}},
+    responses={
+        401: {"description": "Unauthorized"},
+        404: {"description": "Resource Not found"},
+    },
     include_in_schema=True,
+    dependencies=[Depends(check_token)],
 )
 
 
@@ -19,7 +22,10 @@ router = APIRouter(
     description="Get item from its ID",
     summary="Get item",
 )
-async def get_item(item_id: int, q: bool | None = None, db: Session = Depends(get_db)):
+async def get_item(
+    item_id: int,
+    db: Session = Depends(get_db),
+):
     item = item_repository.get_item(db, item_id=item_id)
     if item is None:
         raise HTTPException(status_code=404, detail="Item not found")

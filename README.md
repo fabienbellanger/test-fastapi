@@ -71,6 +71,6 @@ pytest -v
 
 - [ ] Add authentication with `OAuth2` JWT:
     - https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/
-- [ ] Use a database like `sqlite`:
+- [x] Use a database like `sqlite`:
     - https://medium.com/codenx/crafting-with-fastapi-sqlalchemy-and-pydantic-82ff305c5db1
     - https://fastapi.tiangolo.com/tutorial/sql-databases/

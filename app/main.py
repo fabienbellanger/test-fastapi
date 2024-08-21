@@ -1,11 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import items, web
-from . import database
-from .models import item
 
+from app.models import item, user
+from .routers import items, web, users, auth
+from . import database
+
+# Create databases tables
+# TODO: Do better
 item.Base.metadata.create_all(bind=database.engine)
+user.Base.metadata.create_all(bind=database.engine)
+
 
 # Application
 app = FastAPI(
@@ -43,7 +48,9 @@ app.add_middleware(
 
 # Routes
 app.include_router(web.router)
-app.include_router(items.router, prefix="/api/v1")
+app.include_router(auth.router, prefix="/api/v1")
+app.include_router(users.router, prefix="/api/v1/users")
+app.include_router(items.router, prefix="/api/v1/items")
 
 
 if __name__ == "__main__":
