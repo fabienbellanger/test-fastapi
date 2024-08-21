@@ -12,15 +12,6 @@ class ItemBase(BaseModel):
     price: float
     is_offer: bool | None = None
 
-    def display(self) -> str:
-        """
-        Display item
-
-        Display the name and the price of an item.
-        """
-
-        return self.name + " at " + str(self.price)
-
 
 class ItemEdit(ItemBase):
     """
@@ -43,5 +34,14 @@ class Item(ItemBase):
 
     id: int
 
+    def display(self) -> str:
+        """
+        Display item
+
+        Display the name and the price of an item.
+        """
+
+        return self.name + " at " + str(self.price)
+
     class Config:
-        orm_mode = True
+        from_attributes = True

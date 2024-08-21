@@ -1,13 +1,18 @@
 from fastapi import FastAPI
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import items, web
+from .routers import items, web
+from . import database
+from .models import item
+
+item.Base.metadata.create_all(bind=database.engine)
 
 # Application
 app = FastAPI(
     debug=True,
     version="0.1.0",
     title="FastAPI test",
+    summary="FastAPI test",
     description="This is a test of the FastAPI framework",
     contact={
         "name": "Fabien Bellanger",
@@ -16,6 +21,9 @@ app = FastAPI(
     include_in_schema=True,
     docs_url="/docs",
     redoc_url=None,  # Disable ReDoc page
+    swagger_ui_parameters={
+        "tryItOutEnabled": True,
+    },
 )
 
 
