@@ -49,7 +49,7 @@ async def get_all(
                     username=db_user.username,
                     lastname=db_user.lastname,
                     firstname=db_user.firstname,
-                    # created_at=str(db_user.created_at),
+                    created_at=str(db_user.created_at),
                 ),
                 db_users,
             )
