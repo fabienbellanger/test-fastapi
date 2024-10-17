@@ -54,7 +54,9 @@ async def get_all(
                 db_users,
             )
         )
-    except Exception:
+    except Exception as err:
+        print(err)
+
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Error during users fetching",

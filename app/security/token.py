@@ -37,7 +37,7 @@ class JwtToken:
             payload = jwt.decode(token, self._secret_key, algorithms=[self._algorithm])
             username: str = payload.get("sub")
             user_id: str = payload.get("user_id")
-            print(user_id)
+
             if username is None:
                 raise credentials_exception
 
