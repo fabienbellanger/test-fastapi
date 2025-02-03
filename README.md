@@ -32,6 +32,15 @@ Install dependancies
 pip install -r requirements.txt
 ```
 
+### Database
+
+Create the database:
+
+```bash
+sqlite 3 app.db
+sqlite 3 app.db < `schema.sql`
+```
+
 ## pip
 
 ### Updating Python Packages on Windows or Linux
@@ -70,7 +79,7 @@ pytest -v
 ## Todo
 
 - [ ] Add authentication with `OAuth2` JWT:
-    - https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/
+  - https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/
 - [x] Use a database like `sqlite`:
-    - https://medium.com/codenx/crafting-with-fastapi-sqlalchemy-and-pydantic-82ff305c5db1
-    - https://fastapi.tiangolo.com/tutorial/sql-databases/
+  - https://medium.com/codenx/crafting-with-fastapi-sqlalchemy-and-pydantic-82ff305c5db1
+  - https://fastapi.tiangolo.com/tutorial/sql-databases/
