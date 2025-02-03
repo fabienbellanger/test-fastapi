@@ -8,9 +8,11 @@ class ItemBase(BaseModel):
     @author Fabien Bellanger
     """
 
-    name: str = Field(..., description="Name of the item")
-    price: float = Field(..., description="Price of the item")
-    is_offer: bool | None = Field(None, description="Is the item an offer?")
+    name: str = Field(..., description="Name of the item", examples=["Item 1"])
+    price: float = Field(..., description="Price of the item", examples=[10.9])
+    is_offer: bool | None = Field(
+        None, description="Is the item an offer?", examples=[False]
+    )
 
 
 class ItemEdit(ItemBase):
