@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ItemBase(BaseModel):
@@ -8,9 +8,9 @@ class ItemBase(BaseModel):
     @author Fabien Bellanger
     """
 
-    name: str
-    price: float
-    is_offer: bool | None = None
+    name: str = Field(..., description="Name of the item")
+    price: float = Field(..., description="Price of the item")
+    is_offer: bool | None = Field(None, description="Is the item an offer?")
 
 
 class ItemEdit(ItemBase):
@@ -32,7 +32,7 @@ class Item(ItemBase):
     @author Fabien Bellanger
     """
 
-    id: int
+    id: int = Field(..., description="Item ID")
 
     def display(self) -> str:
         """
