@@ -6,7 +6,7 @@ from app.main import app
 from app.routers import get_db
 from app.database import Base
 
-SQLALCHEMY_DATABASE_URL = "sqlite://"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./tests/test.db"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
