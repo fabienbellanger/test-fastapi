@@ -51,10 +51,6 @@ List of all outdated packages:
 pip list --outdated
 ```
 
-```bash
-pip freeze > requirements.txt
-```
-
 Edit `requirements.txt`, and replace all "==" with ">=".
 
 Update
