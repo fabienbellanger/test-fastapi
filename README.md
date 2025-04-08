@@ -1,4 +1,4 @@
-# Test FastApi Python framework
+# Test FastApi and Streamlit Python frameworks
 
 ## Installation
 
@@ -66,14 +66,38 @@ pip freeze > requirements.txt
 
 ## Run
 
+### Server
+
 ```bash
+cd backend
 fastapi dev --reload
+```
+
+### Client
+
+```bash
+cd frontend
+streamlit run app/frontend.py
 ```
 
 ## Tests
 
 ```bash
 pytest -v
+```
+
+## Docker
+
+Build
+
+```
+docker build -t test-streamlit .
+```
+
+Run
+
+```
+docker run -p 8501:8501 test-streamlit
 ```
 
 ## Todo
