@@ -86,19 +86,19 @@ pytest -v
 
 Build
 
-```
+```bash
 docker build -t test-streamlit .
 ```
 
 Run
 
-```
+```bash
 docker run -p 8501:8501 test-streamlit
 ```
 
 ## Todo
 
-- [ ] Add authentication with `OAuth2` JWT:
+- [x] Add authentication with `OAuth2` JWT:
   - https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/
 - [x] Use a database like `sqlite`:
   - https://medium.com/codenx/crafting-with-fastapi-sqlalchemy-and-pydantic-82ff305c5db1
